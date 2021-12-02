@@ -1,5 +1,8 @@
 package mg.orchid.appliBancaire.entities;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,18 +16,25 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 @Entity
+@Data
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)//Parce qu'il y a une héritage
 @DiscriminatorColumn(name = "TYPE_OP",discriminatorType = DiscriminatorType.STRING,length = 1)
 
-public class Operation implements Serializable{
+public abstract class Operation implements Serializable{
 	
 	 //Propriétés de la classe
 	@Id @GeneratedValue
     private Long numero;
     private Date dateOperation;
     private Double montant;
+
     @ManyToOne
-    @JoinColumn(name="CODE_CPTE")//Clé étrangère
+    @JoinColumn(
+            name="code_compte",//Clé étrangère dans la table
+            referencedColumnName = "codeCompte"
+
+    )
     private Compte compte;//pour dire qu'une opération est enregistré dans un compte
 	
     public Operation(Date dateOperation, Double montant, Compte compte) {

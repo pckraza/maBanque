@@ -48,9 +48,12 @@ public  abstract class  Compte implements Serializable{
 			   (mappedBy = "compte",fetch = FetchType.LAZY)
 	   private List<Operation> operations;// un compte enregistre 1 à n opérations
 
-
-
-	   
+	public Compte(String codeCompte, Date dateCreation, Long solde, Client client) {
+		this.codeCompte = codeCompte;
+		this.dateCreation = dateCreation;
+		this.solde = solde;
+		this.client = client;
+	}
 }
 
 

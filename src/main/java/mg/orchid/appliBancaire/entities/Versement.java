@@ -8,9 +8,12 @@ import javax.persistence.Entity;
 @DiscriminatorValue("V")
 public class Versement extends Operation {
 
+	public Versement() {
+	}
+
 	public Versement(Date dateOperation, Double montant, Compte compte) {
 		super(dateOperation, montant, compte);
-		// TODO Auto-generated constructor stub
+
 	}
 
 		

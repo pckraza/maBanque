@@ -8,11 +8,10 @@ import javax.persistence.Entity;
 @DiscriminatorValue("R")
 public class Retrait extends Operation{
 
-	public Retrait(Date dateOperation, Double montant, Compte compte) {
-		super(dateOperation, montant, compte);
-		// TODO Auto-generated constructor stub
+	public Retrait() {
 	}
 
-	
-	
+	public Retrait(Date dateOperation, Double montant, Compte compte) {
+		super(dateOperation, montant, compte);
+	}
 }
