@@ -6,25 +6,28 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+
 @Entity
 @Data
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)//Parce qu'il y a une héritage
-@DiscriminatorColumn(name = "TYPE_OP",discriminatorType = DiscriminatorType.STRING,length = 1)
+@DiscriminatorColumn(name = "type_op",discriminatorType = DiscriminatorType.STRING,length = 1)
 
-public abstract class Operation implements Serializable{
+public class Operation implements Serializable{
 	
 	 //Propriétés de la classe
-	@Id @GeneratedValue
+	@Id
+    @SequenceGenerator(
+            name = "compte_sequence",
+            sequenceName = "compte_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue
+            (
+                    strategy = GenerationType.SEQUENCE,
+                    generator ="compte_sequence"
+            )
     private Long numero;
     private Date dateOperation;
     private Double montant;

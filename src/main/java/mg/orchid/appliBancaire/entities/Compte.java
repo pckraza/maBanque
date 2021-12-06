@@ -27,9 +27,9 @@ import javax.persistence.OneToMany;
 @Data
 @Builder
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="TYPE_COMPTE",discriminatorType =DiscriminatorType.STRING,length=2)
+@DiscriminatorColumn(name="type_compte",discriminatorType =DiscriminatorType.STRING,length=2)
 
-public  abstract class  Compte implements Serializable{
+public class  Compte implements Serializable{
 //Propriétés de la classe
 	
 	   	@Id

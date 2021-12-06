@@ -7,5 +7,6 @@ import mg.orchid.appliBancaire.entities.Client;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long>{
+    public Client findByCode(Long codeClient);
 
 }
